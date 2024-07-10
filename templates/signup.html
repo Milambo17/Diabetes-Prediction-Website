@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="icon">
+        <h2 class="logo">NA<span>S</span>H</h2>
+      </div>
+
+      <div class="menu">
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a href="/about">ABOUT</a></li>
+          <li><a href="/contact">CONTACT</a></li>
+          <li><a href="login">LOGIN/SIGNUP</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="log-container">
+      <div class="log-form">
+        <h1>Create An Account!</h1>
+
+        <form class="form-content">
+          <label for="f-name">First Name:</label>
+          <input
+            type="text"
+            name="f-name"
+            placeholder="Enter First Name"
+            required
+          />
+          <label for="L-name">Last Name:</label>
+          <input
+            type="text"
+            name="L-name"
+            placeholder="Enter Last Name"
+            required
+          />
+          <label for="email">Email Address:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+        </form>
+        <div class="log-btn"><button type="submit">Sign Up</button></div>
+        <p>Already have an account? <a href="login.html">Log In</a></p>
+      </div>
+    </div>
+  </body>
+
+  <script src="index.js"></script>
+</html>
+<p>
+  https://www.mayoclinic.org/diseases-conditions/diabetes/symptoms-causes/syc-20371444
+</p>

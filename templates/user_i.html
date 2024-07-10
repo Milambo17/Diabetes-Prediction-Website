@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Diabetes Prediction</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body class="UI-body">
+    <div class="navbar">
+      <div class="icon">
+        <h2 class="logo">NA<span>S</span>H</h2>
+      </div>
+
+      <div class="menu">
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a href="/about">ABOUT</a></li>
+          <li><a href="/contact">CONTACT</a></li>
+          <li><a href="/user_i">PREDICTION</a></li>
+          <li><a href="/profile">PROFILE</a></li>
+          <li><a href="/login">LOGIN/SIGNUP</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="user-container">
+      <div class="input-form">
+        <h1>Diabetes Prediction Using ML</h1>
+
+        <form method="POST" action="/user_i">
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" name="age" required />
+          </div>
+          <div class="form-group">
+            <label>Gender:</label>
+            <select name="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="bp">Blood Pressure Value</label>
+            <input
+              type="number"
+              name="Bp"
+              placeholder="Enter blood pressure"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="gl">Glucose Level</label>
+            <input
+              type="number"
+              name="gl"
+              placeholder="Enter Glucose level"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="bmi">BMI Value</label>
+            <input
+              type="number"
+              name="bmi"
+              placeholder="Enter body mass index"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="dpf">Diabetes Pedigree Function Value</label>
+            <input
+              type="number"
+              name="dpf"
+              placeholder="Enter DPF value"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="insulin">Insulin Value</label>
+            <input
+              type="number"
+              name="insulin"
+              placeholder="Enter insulin value"
+              required
+            />
+          </div>
+          <button type="submit">Predict</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

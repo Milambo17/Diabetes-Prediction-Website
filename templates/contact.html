@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Contact Info</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <div class="navbar">
+        <div class="icon">
+          <h2 class="logo">NA<span>S</span>H</h2>
+        </div>
+
+        <div class="menu">
+          <ul>
+            <li><a href="/">HOME</a></li>
+            <li><a href="/about">ABOUT</a></li>
+            <li><a href="/contact">CONTACT</a></li>
+            <li><a href="/login">LOGIN/SIGNUP</a></li>
+          </ul>
+        </div>
+      </div>
+    <div class="contact-container">
+        <h1>Contact Us Here</h1>
+        <p>For more information, querries or any help you may need, feel free to contact us using the given contact information.</p>
+            <div class="contact-box">
+                <div class="contact-l">
+                    <h3>Send your request</h3>
+                    <form action="">
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label for="">Name</label>
+                                <input type="text" placeholder="Noble Milambo" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="">  Mobile Number</label>
+                                <input type="text" placeholder="+260 971 234 567" required>
+                            </div>
+                            </div>
+                            <div class="input-row">
+                            <div class="input-group">
+                                <label for="">Email</label>
+                                <input type="email" placeholder="123@gmail.com" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="">Subject</label>
+                                <input type="text" placeholder="Feedback" required>
+                            </div>
+                        </div>
+                        <label for="">Message</label>
+                        <textarea  rows="5" placeholder="Enter your message..."></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                <div class="contact-r">
+                    <h3>Reach us</h3>
+                    <table>
+                        <tr>
+                            <td>Email:</td>
+                            <td>Brauttjaaland@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile:</td>
+                            <td>+260-971-599-627</td>
+                        </tr>
+                        <tr>
+                            <td>Address:</td>
+                            <td>45638 DMI St Eugene University,<br> Lusaka, Zambia</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    
+  </body>
+</html>
