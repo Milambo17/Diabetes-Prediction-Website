@@ -10,42 +10,56 @@
   <body class="UI-body">
     <div class="navbar">
       <div class="icon">
-        <h2 class="logo">NA<span>S</span>H</h2>
+        <h2 class="logo">
+          <img
+            src="{{ url_for('static', filename='css/Images/Logos/Screenshot.png') }}"
+            alt="Logo"
+            class="logo-img"
+          />
+        </h2>
       </div>
-
-      <div class="menu">
-        <ul>
-          <li><a href="/">HOME</a></li>
-          <li><a href="/about">ABOUT</a></li>
-          <li><a href="/contact">CONTACT</a></li>
-          <li><a href="/user_i">PREDICTION</a></li>
-          <li><a href="/profile">PROFILE</a></li>
-          <li><a href="/login">LOGIN/SIGNUP</a></li>
-        </ul>
-      </div>
+      <div class="menu-icon" onclick="toggleSidebar()">
+        &#9776; <!-- This is the hamburger menu icon -->
+    </div>
+</div>
+<div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
+    <ul>
+        <li><a href="/">HOME</a></li>
+        <li><a href="/about">ABOUT</a></li>
+        <li><a href="/contact">CONTACT</a></li>
+        <li><a href="/user_i">PREDICTION</a></li>
+        
+    </ul>
+</div>
     </div>
     <div class="user-container">
-      <div class="input-form">
+      <div class="user-form">
         <h1>Diabetes Prediction Using ML</h1>
-
-        <form method="POST" action="/user_i">
+        <form id="prediction-form">
           <div class="form-group">
             <label for="age">Age</label>
-            <input type="number" name="age" required />
+            <input type="number" id="age" name="age" step="0.01" required />
           </div>
           <div class="form-group">
-            <label>Gender:</label>
-            <select name="gender">
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-            </select>
+            <label for="pr">Pregnancies</label>
+            <input
+              type="number"
+              id="pr"
+              name="pr"
+              placeholder="Enter Pregnancies"
+              step="1"
+              required
+            />
           </div>
           <div class="form-group">
             <label for="bp">Blood Pressure Value</label>
             <input
               type="number"
-              name="Bp"
-              placeholder="Enter blood pressure"
+              id="bp"
+              name="bp"
+              placeholder="Enter Blood Pressure"
+              step="1"
               required
             />
           </div>
@@ -53,8 +67,10 @@
             <label for="gl">Glucose Level</label>
             <input
               type="number"
+              id="gl"
               name="gl"
               placeholder="Enter Glucose level"
+              step="1"
               required
             />
           </div>
@@ -62,8 +78,10 @@
             <label for="bmi">BMI Value</label>
             <input
               type="number"
+              id="bmi"
               name="bmi"
-              placeholder="Enter body mass index"
+              placeholder="Enter Body Mass Index"
+              step="0.001"
               required
             />
           </div>
@@ -71,8 +89,10 @@
             <label for="dpf">Diabetes Pedigree Function Value</label>
             <input
               type="number"
+              id="dpf"
               name="dpf"
               placeholder="Enter DPF value"
+              step="0.001"
               required
             />
           </div>
@@ -80,14 +100,73 @@
             <label for="insulin">Insulin Value</label>
             <input
               type="number"
+              id="insulin"
               name="insulin"
-              placeholder="Enter insulin value"
+              placeholder="Enter Insulin Value"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="sk">Skin Thickness</label>
+            <input
+              type="number"
+              id="sk"
+              name="sk"
+              placeholder="Enter Skin Thickness"
+              step="0.01"
               required
             />
           </div>
           <button type="submit">Predict</button>
+          <!-- Display the prediction result if available -->
+        <div id="result-container" class="result" style="display: none"></div>
         </form>
+        
       </div>
     </div>
+    <script>
+      function toggleSidebar() {
+          var sidebar = document.getElementById('sidebar');
+          var menuIcon = document.querySelector('.menu-icon');
+          if (sidebar.style.width === '250px') {
+              sidebar.style.width = '0';
+              menuIcon.style.display = 'block'; // Show the menu icon
+          } else {
+              sidebar.style.width = '250px';
+              menuIcon.style.display = 'none'; // Hide the menu icon
+          }
+      }
+
+      document.getElementById('prediction-form').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent form from submitting normally
+
+          // Collect form data
+          let formData = new FormData(this);
+          let data = {};
+          formData.forEach((value, key) => {
+              data[key] = value;
+          });
+
+          // Send AJAX request
+          fetch('/user_i', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+          })
+          .then(response => response.json())
+          .then(data => {
+              // Display the result
+              let resultContainer = document.getElementById('result-container');
+              resultContainer.style.display = 'block';
+              resultContainer.innerHTML = `<h2>Prediction Result: ${data.result}</h2>`;
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          });
+      });
+  </script>
   </body>
 </html>

@@ -7,21 +7,31 @@
   <body>
     <div class="navbar">
         <div class="icon">
-          <h2 class="logo">NA<span>S</span>H</h2>
+            <h2 class="logo">
+              <img
+                src="{{ url_for('static', filename='css/Images/Logos/Screenshot.png') }}"
+                alt="Logo"
+                class="logo-img"
+              />
+            </h2>
+          </div>
+          <div class="menu-icon" onclick="toggleSidebar()">
+            &#9776; <!-- This is the hamburger menu icon -->
         </div>
-
-        <div class="menu">
-          <ul>
+    </div>
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">&times;</a>
+        <ul>
             <li><a href="/">HOME</a></li>
             <li><a href="/about">ABOUT</a></li>
             <li><a href="/contact">CONTACT</a></li>
-            <li><a href="/login">LOGIN/SIGNUP</a></li>
-          </ul>
-        </div>
-      </div>
+            <li><a href="/user_i">PREDICTION</a></li>
+            
+        </ul>
+    </div>
     <div class="contact-container">
-        <h1>Contact Us Here</h1>
-        <p>For more information, querries or any help you may need, feel free to contact us using the given contact information.</p>
+        <h1>CONTACT US HERE!</h1>
+       
             <div class="contact-box">
                 <div class="contact-l">
                     <h3>Send your request</h3>
@@ -48,7 +58,7 @@
                         </div>
                         <label for="">Message</label>
                         <textarea  rows="5" placeholder="Enter your message..."></textarea>
-                        <button type="submit">Submit</button>
+                        <button type="submit">SUBMIT</button>
                     </form>
                 </div>
                 <div class="contact-r">
@@ -66,13 +76,18 @@
                             <td>Address:</td>
                             <td>45638 DMI St Eugene University,<br> Lusaka, Zambia</td>
                         </tr>
+                        
+                        <tr> 
+                            <td id="td-special"></td>
+                        </tr>
                     </table>
+                    <p>For more information, querries or any help you may need, feel free to contact us using the given contact information</p>
                 </div>
                 
                 
             </div>
         </div>
     </div>
-    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
 </html>

@@ -7,7 +7,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Load the model
-with open('model.pkl', 'rb') as file:
+with open('modelv4.pkl', 'rb') as file:
     model = pickle.load(file)
 
 
@@ -40,25 +40,24 @@ def signup():
 def user_i():
     if request.method == 'POST':
         age = int(request.form['age'])
-        gender = request.form['gender']
-        bp = float(request.form['Bp'])
+        pr = float(request.form['pr'])
+        bp = float(request.form['bp'])
         gl = float(request.form['gl'])
         bmi = float(request.form['bmi'])
         dpf = float(request.form['dpf'])
         insulin = float(request.form['insulin'])
+        sk = float(request.form['sk'])
 
-        # Assuming gender needs to be converted to a binary variable
-        gender = 1 if gender == 'male' else 0
-
+       
         # Create a feature array
-        features = np.array([[age, gender, bp, gl, bmi, dpf, insulin]])
+        features = np.array([[age, pr, bp, gl, bmi, dpf, insulin, sk]])
 
         # Make a prediction
         prediction = model.predict(features)
 
         # Return the prediction result
         result = 'Diabetes' if prediction[0] == 1 else 'No Diabetes'
-        return render_template('result.html', result=result)
+        return render_template('user_i.html', result=result)
 
     return render_template('user_i.html')
 
